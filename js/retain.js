@@ -20,7 +20,16 @@ $(function(){
     var octopus = {
         addNewNote: function(noteStr) {
             model.add({
-                content: noteStr
+                content: noteStr,
+                date: (function () {
+                    var today = new Date(),
+                        mo = today.getMonth(),
+                        dd = today.getDate(),
+                        yyyy = today.getYear(),
+                        hh = today.getHours(),
+                        mi = today.getMinutes();
+                    return ("Created " + mo + "/" + dd + "/" + yyyy + " " hh + ":" + mi);
+                }())
             });
             view.render();
         },
